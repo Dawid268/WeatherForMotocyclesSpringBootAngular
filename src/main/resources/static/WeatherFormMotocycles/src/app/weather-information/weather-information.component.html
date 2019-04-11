@@ -1,0 +1,26 @@
+<h1>Dane pogodowe</h1>
+
+<table class="table table-dark">
+  <thead >
+  <tr>
+    <th scope="col">Miasto</th>
+    <th scope="col">Temperatura</th>
+    <th scope="col">Wiatr</th>
+    <th scope="col">Deszcz</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let i of weatherModel">
+  <tr>
+    <td>{{i.cityName}}</td>
+    <td>{{i.temp | number:'1.1-1'}}</td>
+    <td>{{i.wind}}</td>
+    <td><div *ngIf="i.rain; then rainon else rainoff"></div>
+      <ng-template #rainon>
+        "Pada desz lub jest wysoko prawdopodobne że będzie padał w najbliższym czasie"
+      </ng-template>
+      <ng-template #rainoff>
+        "Brak deszczu
+      </ng-template></td>
+  </tr>
+  </tbody>
+</table>
